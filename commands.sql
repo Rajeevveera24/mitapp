@@ -1,9 +1,9 @@
 CREATE DATABASE alumni;
 
 CREATE TABLE users (
-    id INT NOT NULL,
-    full_name VARCHAR(255) NOT NULL,
-    reg_no int NOT NULL,
+    id INT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    reg_no int  NOT NULL,
     email VARCHAR(255) NOT NULL,
     batch YEAR NOT NULL,
     branch VARCHAR(255) NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE publications (
 );
 
 CREATE TABLE branches (
-    name_branch VARCHAR(255)
+    name_branch VARCHAR(255) 
 );
 
 CREATE TABLE Skills (
