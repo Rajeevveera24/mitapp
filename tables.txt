@@ -1,0 +1,81 @@
+// Creating tables
+Table users as U {
+  id int [pk, increment] // auto-increment
+  name string [not null]
+  reg_no int [unique, not null]
+  email varchar 
+  batch year [not null]
+  branch varchar [not null, ref: > B.code]
+}
+
+Table branches as B{
+  id int [pk, increment]
+  code varchar [not null, unique]
+  name string [not null, unique]
+}
+
+Table jobs as J {
+  s_id int [not null, ref: > U.id]
+  company varchar
+  location varchar
+  role varchar
+  start_date date
+  end_date date 
+  ongoing bool
+}
+
+Table internships as I{
+  s_id int [not null, ref: > U.id]
+  company varchar [not null]
+  location varchar
+  role varchar
+  start_date date
+  end_date date
+  ongoing bool [not null]
+  research bool [not null]
+}
+
+Table masters as M{
+  s_id int [pk, ref: - U.id]
+  university varchar [not null]
+  major varchar [not null]
+  minor varchar
+  batch year [not null]
+  country varchar
+  city varchar
+}
+
+Table projects as Pr{
+  s_id int [not null, ref: > U.id]
+  title varchar [not null]
+  descrpt varchar
+  start date
+  end date
+  research bool [not null]
+  fields varchar
+  tech_stack varchar
+  funded bool [not null]
+}
+
+Table publications as Pb{
+  s_id int [not null, ref: > U.id]
+  title varchar [not null]
+  is_conference bool [not null]
+  conf_name varchar
+  fields varchar
+  descrpt varchar
+  present_date date
+}
+
+Table skills as S{
+  s_id int [pk, ref: - U.id]
+  tech_skills varchar
+  tech_used varchar
+}
+// Creating references
+// You can also define relaionship separately
+// > many-to-one; < one-to-many; - one-to-one
+
+
+
+
